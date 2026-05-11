@@ -1,0 +1,1507 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>Jessie Math捷析 - 乘以幾分之一</title> 
+
+  <meta name="description" content="© 2025–2026 Jessie Math 捷析老師. All rights reserved.">
+  <meta property="og:title" content="Jessie Math捷析 - 乘以幾分之一">
+  <meta property="og:description" content="© 2025–2026 Jessie Math 捷析老師. All rights reserved.">
+  <meta property="og:type" content="website">
+
+  <meta property="og:image" content="g5-u9.png">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="1536">
+  <meta property="og:image:alt" content="Jessie Math 遊戲封面">
+
+  <link rel="image_src" href="g5-u9.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Jessie Math捷析 - 乘以幾分之一">
+  <meta name="twitter:description" content="© 2025–2026 Jessie Math 捷析老師. All rights reserved.">
+  <meta name="twitter:image" content="g5-u9.png">
+
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #3b82f6; 
+      --secondary: #60a5fa;
+      --accent: #f59e0b;
+      --bg: #fdfcf8;
+      --card-bg: rgba(255, 255, 255, 0.85);
+      --card-border: rgba(255, 255, 255, 0.6);
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --brand-yellow: #e87c24;
+      --hero-bg: #ffffff;
+      --hero-border: rgba(15, 23, 42, 0.06);
+    }
+
+    * { box-sizing: border-box; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    
+    body {
+      margin: 0;
+      font-family: 'Plus Jakarta Sans', 'Noto Sans TC', sans-serif;
+      color: var(--text-main);
+      background: var(--bg);
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(186, 230, 253, 0.5) 0px, transparent 60%),
+        radial-gradient(at 100% 100%, rgba(191, 219, 254, 0.5) 0px, transparent 60%);
+      min-height: 100vh;
+      overflow-x: hidden;
+      /* 防止拖曳反藍 */
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .wrap { max-width: 1000px; margin: 0 auto; padding: 24px 20px 28px; }
+
+    /* 全新長條滿版 Header */
+    header.hero {
+      background: var(--hero-bg);
+      border-bottom: 1px solid var(--hero-border);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      width: 100%;
+    }
+    
+    .hero-wrap {
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .brand { display: flex; align-items: center; gap: 14px; min-width: 0; }
+    .brandMark {
+      width: 52px; height: 52px; border-radius: 999px; background: #ffffff; position: relative;
+      display: flex; align-items: center; justify-content: center; flex: 0 0 auto;
+      border: 3px solid var(--brand-yellow); overflow: hidden;
+    }
+    .brandMark img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 999px; }
+
+    .title { min-width: 0; display: flex; align-items: center; }
+    .title h1 { margin: 0; font-size: 1.65rem; font-weight: 700; letter-spacing: -0.5px; line-height: 1; white-space: nowrap; color: #1e3a8a; }
+
+    .nav { display: flex; align-items: center; gap: 12px; flex: 0 0 auto; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-btn {
+      padding: 10px 18px; border-radius: 999px; font-weight: 600; font-size: 0.95rem;
+      display: inline-flex; align-items: center; gap: 8px; text-decoration: none; background: #ffffff; user-select: none;
+    }
+    .nav-btn.blue { border: 1px solid #3b82f6; color: #3b82f6; }
+    .nav-btn.blue:hover { background: #eff6ff; transform: translateY(-1px); }
+    .nav-btn.purple { border: 1px solid #8b5cf6; color: #8b5cf6; background: #f5f3ff; }
+    .nav-btn.purple:hover { background: #ede9fe; transform: translateY(-1px); }
+
+    .btn {
+      border: 1px solid rgba(15, 23, 42, 0.10); cursor: pointer; padding: 12px 16px; border-radius: 999px;
+      font-weight: 800; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 10px;
+      background: rgba(248, 250, 252, 0.9); color: var(--text-main); box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+      text-decoration: none; user-select: none; justify-content: center;
+    }
+    .btn:hover{ transform: translateY(-1px); box-shadow: 0 10px 18px rgba(15, 23, 42, 0.07); border-color: rgba(59, 130, 246, 0.35); }
+    .btn.good { border-color: var(--primary); background: rgba(59, 130, 246, 0.1); color: var(--primary); }
+
+    .btn-blocky {
+      display: inline-flex; align-items: stretch; border: 2px solid #1a0066; border-radius: 0px; padding: 0;
+      font-weight: 900; font-size: 1rem; color: #ffffff; text-transform: uppercase; letter-spacing: 1px;
+      cursor: pointer; overflow: hidden; box-shadow: 0 4px 0 #1a0066; text-decoration: none; min-width: 160px;
+      transition: transform 0.1s, box-shadow 0.1s, filter 0.2s;
+    }
+    .btn-blocky:hover { filter: brightness(1.15); transform: translateY(2px); box-shadow: 0 2px 0 #1a0066; }
+    .btn-blocky:active { transform: translateY(4px); box-shadow: 0 0 0 #1a0066; }
+    .btn-blocky .icon-part { background: #390099; border-right: 4px solid #1434ff; padding: 12px 16px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; min-width: 48px; }
+    .btn-blocky .text-part { background: linear-gradient(90deg, #4f00db, #6400ff); padding: 12px 16px; display: flex; align-items: center; justify-content: center; flex: 1; white-space: nowrap; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); }
+    .btn-blocky.disabled, .btn-blocky:disabled { filter: grayscale(1) opacity(0.5); cursor: not-allowed; transform: none !important; box-shadow: 0 4px 0 #1a0066 !important; }
+    .btn-blocky.active-toggle .text-part { background: linear-gradient(90deg, #e87c24, #f59e0b); }
+    .btn-blocky.active-toggle .icon-part { background: #c2410c; border-right-color: #ea580c; }
+    .btn-blocky.alt-style .icon-part { background: #047857; border-right-color: #10b981; }
+    .btn-blocky.alt-style .text-part { background: linear-gradient(90deg, #059669, #10b981); }
+
+    .screen { display: none; animation: fadeIn 0.5s ease; }
+    .screen.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    .card { background: var(--card-bg); backdrop-filter: blur(16px); border-radius: var(--radius-lg); border: 1px solid var(--card-border); box-shadow: var(--glass-shadow); margin-top: 24px; padding: 32px; position: relative; }
+    .tag { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; background: rgba(59, 130, 246, 0.1); color: var(--primary); margin-bottom: 12px; display: inline-block; }
+    .inp { width: 100%; padding: 16px; border-radius: var(--radius-md); border: 1px solid #e2e8f0; background: rgba(255,255,255,0.5); font-size: 1rem; outline: none; }
+    .inp:focus { border-color: var(--primary); background: white; box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1); }
+    .panel { background: rgba(255,255,255,0.4); padding: 24px; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.5); }
+
+    .introGrid{ display:grid; grid-template-columns: 1.1fr 0.9fr; gap: 16px; margin-top: 16px; }
+    .infoCard{ background: rgba(255,255,255,0.55); border: 1px solid rgba(255,255,255,0.6); border-radius: var(--radius-md); padding: 18px; }
+    .infoTitle{ display:flex; align-items:center; gap:10px; font-weight:800; margin:0 0 8px 0; }
+    .infoList{ margin: 0; padding-left: 18px; color: var(--text-muted); line-height: 1.8; font-size: 0.95rem; }
+    .miniHint{ margin-top: 10px; font-size: 0.85rem; color: var(--text-muted); }
+
+    /* 修改了 .lvl 的 padding 使其高度適中 */
+    .levelCards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 20px 0; }
+    .lvl { padding: 18px 12px; border-radius: var(--radius-md); background: white; border: 2px solid transparent; cursor: pointer; text-align: center; position: relative; }
+    .lvl:hover { transform: scale(1.02); }
+    .lvl.active { border-color: var(--primary); background: rgba(59, 130, 246, 0.05); }
+    .lvl b { display: block; margin-top: 12px; font-size: 1rem; }
+
+    .hudRow { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; gap: 10px; flex-wrap: wrap; }
+    .pillMini { padding: 8px 16px; border-radius: 30px; background: white; font-size: 0.85rem; font-weight: 700; border: 1px solid #e2e8f0; white-space: nowrap; }
+    .timeBar { height: 6px; background: #e2e8f0; border-radius: 10px; margin: 20px 0; overflow: hidden; }
+    .timeFill { height: 100%; width: 100%; background: var(--primary); border-radius: 10px; transform-origin: left; }
+
+    /* Vertical Fraction Styles & Equation Spacing Fix */
+    .equation { font-size: 2.5rem; font-weight: 900; display: flex; align-items: center; justify-content: center; gap: 24px; padding: 10px 0 18px; flex-wrap: wrap; }
+    .frac { display: inline-flex; flex-direction: column; align-items: center; justify-content: center; vertical-align: middle; background: white; padding: 12px 20px; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); font-weight: 900; line-height: 1.2; }
+    .frac .line { width: 34px; height: 3px; background: var(--text-main); margin: 4px 0; border-radius: 2px; }
+    .frac.sm { padding: 6px 12px; border-radius: 10px; box-shadow: none; border: 1px solid #e2e8f0; background: rgba(255,255,255,0.95); font-size: 1.05rem; margin: 0 4px; }
+    .frac.sm .line { width: 22px; height: 3px; margin: 3px 0; }
+    .box { background: white; padding: 16px 28px; border-radius: 16px; border: 1px solid #e2e8f0; display: inline-block; vertical-align: middle; }
+
+    .quick { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 18px; position:relative; z-index:10; }
+    .qbtn { padding: 18px; border-radius: var(--radius-md); background: white; border: 1px solid #e2e8f0; cursor: pointer; display: flex; justify-content: center; align-items: center; min-height: 86px; }
+    .qbtn:hover { border-color: var(--primary); transform: translateY(-1px); }
+
+    .overlay { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.4); backdrop-filter: blur(8px); display: none; align-items: center; justify-content: center; z-index: 200; }
+    .overlay.show { display: flex; }
+    .modal { background: white; width: min(520px, 92%); border-radius: var(--radius-lg); padding: 40px; text-align: center; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); position: relative; }
+
+    .lb-wrapper { overflow-x: auto; }
+    .lb { width: 100%; border-collapse: collapse; margin-top: 20px; min-width: 600px; }
+    .lb th { text-align: left; color: var(--text-muted); font-size: 0.8rem; padding-bottom: 12px; text-transform: uppercase; letter-spacing: 1px; border-bottom: 2px solid #f1f5f9; }
+    .lb td { padding: 12px 0; border-bottom: 1px solid #f1f5f9; font-size: 0.9rem; }
+    .rankCell { font-weight: 800; width: 60px; text-align: center; font-size: 1.1rem; }
+
+    .bigFeedback{ border-radius: 18px; padding: 16px 18px; font-weight: 1000; text-align:center; font-size: 1.35rem; line-height: 1.45; border: 1px solid rgba(15,23,42,0.08); background: rgba(255,255,255,0.75); box-shadow: 0 18px 28px rgba(15,23,42,0.08); margin-top: 14px; position:relative; z-index:10; }
+    .bigFeedback.ok{ border-color: rgba(16,185,129,0.35); background: rgba(16,185,129,0.08); }
+    .bigFeedback.bad{ border-color: rgba(244,63,94,0.35); background: rgba(244,63,94,0.08); }
+    .answerLine{ display:flex; align-items:center; justify-content:center; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+
+    /* L3 Styles */
+    .l3Wrap{ display:grid; gap: 16px; position:relative; z-index:10; }
+    .l3TopHint{ font-weight: 900; color: var(--text-muted); display:flex; align-items:center; justify-content:center; gap: 10px; text-align:center; font-size: 0.95rem; line-height: 1.6; }
+    .dropSlot{ min-width: 120px; height: 72px; display:flex; align-items:center; justify-content:center; border-radius: 16px; border: 2px dashed rgba(59,130,246,0.45); background: rgba(59,130,246,0.06); font-weight: 1000; color: rgba(59,130,246,0.9); box-shadow: inset 0 0 0 3px rgba(255,255,255,0.4); padding: 6px 10px; }
+    .dropSlot.hover{ background: rgba(59,130,246,0.12); transform: translateY(-1px); }
+    .dragGrid{ display:grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .dragChip{ background: white; border: 1px solid #e2e8f0; border-radius: 16px; padding: 14px 10px; font-weight: 900; display:flex; align-items:center; justify-content:center; cursor: grab; box-shadow: 0 8px 18px rgba(15,23,42,0.06); user-select:none; min-height: 86px; }
+    .dragChip:active{ cursor: grabbing; transform: scale(0.98); }
+    .dragChip.locked{ opacity: 0.55; cursor: not-allowed; transform: none !important; }
+
+    .l3bGrid{ display:grid; grid-template-columns: 1.2fr 0.8fr; gap: 18px; margin-top: 8px; position:relative; z-index:10; }
+    .l3bBox{ background: rgba(255,255,255,0.55); border: 1px solid rgba(255,255,255,0.6); border-radius: var(--radius-md); padding: 18px; }
+    .l3bTitle{ font-weight: 1000; display:flex; align-items:center; gap:10px; margin:0 0 10px 0; }
+    .l3bSub{ margin: 0 0 14px 0; color: var(--text-muted); font-weight: 800; font-size: 0.9rem; line-height: 1.55; }
+    .meaningCards{ display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .meaningCard{ background: white; border: 1px solid #e2e8f0; border-radius: 16px; padding: 14px 14px; font-weight: 900; display:flex; align-items:center; gap:10px; cursor: grab; user-select:none; box-shadow: 0 8px 18px rgba(15,23,42,0.06); min-height: 56px; line-height: 1.45; }
+    .meaningCard i{ color: var(--primary); flex-shrink: 0; }
+    .meaningCard.locked{ opacity: .55; cursor:not-allowed; box-shadow:none; }
+    .pairArea{ display:grid; gap: 12px; }
+    .pairSlot{ border-radius: 18px; border: 2px dashed rgba(59,130,246,0.45); background: rgba(59,130,246,0.06); padding: 14px; }
+    .pairSlot.hover{ background: rgba(59,130,246,0.12); transform: translateY(-1px); }
+    .slotHead{ display:flex; align-items:center; justify-content:space-between; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+    .slotBadge{ font-weight: 1000; padding: 6px 10px; border-radius: 999px; background: rgba(255,255,255,0.85); border: 1px solid rgba(15,23,42,0.10); display:inline-flex; align-items:center; gap:8px; white-space: nowrap; }
+    .slotFill{ min-height: 56px; border-radius: 14px; background: rgba(255,255,255,0.75); border: 1px solid rgba(15,23,42,0.08); display:flex; align-items:center; justify-content:center; padding: 12px; text-align:center; font-weight: 1000; line-height: 1.45; }
+    .slotEmpty{ color: rgba(59,130,246,0.85); font-weight: 1000; }
+    .pairActions{ display:flex; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
+    .btnGreen{ background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.30); color: #0f766e; font-weight: 1000; border-radius: 14px; padding: 12px 14px; cursor:pointer; display:inline-flex; align-items:center; justify-content:center; gap: 10px; flex: 1; min-width: 140px; }
+    .btnGreen:hover{ background: rgba(16,185,129,0.18); transform: translateY(-1px); }
+    .btnGray{ background: rgba(148,163,184,0.14); border: 1px solid rgba(148,163,184,0.35); color: #334155; font-weight: 1000; border-radius: 14px; padding: 12px 14px; cursor:pointer; display:inline-flex; align-items:center; justify-content:center; gap: 10px; flex: 1; min-width: 140px; }
+    .btnGray:hover{ background: rgba(148,163,184,0.20); transform: translateY(-1px); }
+
+    .gameActions{ margin-top: 20px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+
+    /* Teacher Popup (Modified for bounding safety and smooth animation) */
+    .teacher-popup {
+      position: fixed; 
+      bottom: 20px; 
+      z-index: 9999; /* 設最高，保證不會被切掉或被蓋住 */
+      display: flex; 
+      align-items: flex-end; 
+      gap: 10px;
+      pointer-events: none; /* 穿透點擊，不影響學生寫白板 */
+      transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease;
+      opacity: 0;
+    }
+    
+    .teacher-popup.left {
+      left: 20px; 
+      flex-direction: row;
+      transform: translateX(-150%); /* 初始隱藏在畫面左外側 */
+    }
+    .teacher-popup.left.show {
+      transform: translateX(0); /* 滑入畫面 */
+      opacity: 1;
+    }
+    
+    .teacher-popup.right {
+      right: 20px; 
+      flex-direction: row-reverse;
+      transform: translateX(150%); /* 初始隱藏在畫面右外側 */
+    }
+    .teacher-popup.right.show {
+      transform: translateX(0); /* 滑入畫面 */
+      opacity: 1;
+    }
+    
+    .teacher-img { 
+      width: clamp(200px, 25vw, 300px); /* 寬度自動在 200px ~ 300px 間縮放 */
+      object-fit: contain; 
+      filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2)); 
+    }
+    .teacher-bubble {
+      background: white; border: 3px solid var(--primary); border-radius: 20px; padding: 14px 20px;
+      font-size: 1.1rem; font-weight: 900; color: var(--text-main); box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      max-width: 220px; position: relative; margin-bottom: 80px; word-wrap: break-word;
+    }
+    .teacher-popup.left .teacher-bubble::after {
+      content: ''; position: absolute; bottom: -10px; left: 20px; border-width: 10px 10px 0; border-style: solid;
+      border-color: var(--primary) transparent transparent transparent;
+    }
+    .teacher-popup.right .teacher-bubble::after {
+      content: ''; position: absolute; bottom: -10px; right: 20px; border-width: 10px 10px 0; border-style: solid;
+      border-color: var(--primary) transparent transparent transparent;
+    }
+
+    /* Whiteboard */
+    .whiteboard-layer {
+      position: absolute; inset: 0; z-index: 50; pointer-events: none; border-radius: var(--radius-lg);
+    }
+    .whiteboard-layer.active { pointer-events: auto; cursor: crosshair; }
+    .wb-controls {
+      position: absolute; top: -15px; right: 20px; background: white; padding: 5px 15px; border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1); border: 2px solid var(--primary); font-weight: 800; font-size: 0.85rem;
+      color: var(--primary); z-index: 51; display: none; align-items: center; gap: 8px;
+    }
+    .wb-controls.show { display: flex; }
+    .wb-clear { background: #fee2e2; color: #ef4444; border:none; border-radius:50%; width:24px; height:24px; cursor:pointer; display:grid; place-items:center; }
+
+    footer{ max-width: 1000px; margin: 14px auto 28px; padding: 0 20px; }
+    .footer-pill{ background: rgba(255,255,255,0.70); border: 1px solid rgba(255,255,255,0.55); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-radius: 999px; padding: 14px 18px; display:flex; align-items:center; justify-content:space-between; gap: 14px; box-shadow: 0 10px 26px rgba(15,23,42,0.04); flex-wrap: wrap; }
+    .footer-left, .footer-right{ display:flex; align-items:center; gap: 10px; font-weight: 900; color: rgba(30,41,59,0.88); flex-wrap: wrap; }
+    .footer-dot{ width: 10px; height: 10px; border-radius: 999px; background: var(--brand-yellow); box-shadow: 0 10px 18px -12px rgba(245, 158, 11, 0.65); }
+    .footer-copy{ font-size: 0.88rem; color: rgba(30,41,59,0.72); font-weight: 900; }
+    .footer-icon{ width: 28px; height: 28px; border-radius: 999px; background: rgba(59,130,246,0.12); border: 1px solid rgba(59,130,246,0.20); display:grid; place-items:center; color: var(--primary); }
+    .footer-tagline{ font-size: 0.92rem; color: rgba(30,41,59,0.82); font-weight: 1000; }
+
+    /* Review Dashboard */
+    .review-list { max-height: 55vh; overflow-y: auto; text-align: left; margin-top: 20px; padding-right: 10px; display:flex; flex-direction:column; gap:12px; }
+    .review-list::-webkit-scrollbar { width: 8px; }
+    .review-list::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 10px; }
+    .review-list::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+    .review-item { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 16px 20px; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
+    .review-item.ok { border-left: 6px solid #10b981; }
+    .review-item.bad { border-left: 6px solid #f43f5e; }
+    .review-q { font-size: 1.15rem; font-weight: 800; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; padding-bottom: 10px; border-bottom: 1px dashed #cbd5e1; }
+    .review-ans { display: flex; flex-direction: column; gap: 8px; font-size: 1rem; font-weight: 700; }
+    .review-ans .your-ans { color: #f43f5e; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;}
+    .review-ans .correct-ans { color: #10b981; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;}
+
+    /* RWD & Orientation Warning */
+    #landscapeWarning {
+      display: none; position: fixed; inset: 0; background: var(--primary); color: white;
+      z-index: 9999; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px;
+    }
+    #landscapeWarning i { font-size: 4rem; margin-bottom: 20px; animation: rotatePhone 2s infinite ease-in-out; }
+    @keyframes rotatePhone { 0% { transform: rotate(0deg); } 50% { transform: rotate(-90deg); } 100% { transform: rotate(-90deg); } }
+    
+    @media (max-width: 600px) and (orientation: portrait) {
+      #landscapeWarning { display: flex; }
+      .wrap, header, footer { display: none !important; }
+    }
+
+    @media (max-width: 860px){
+      .introGrid{ grid-template-columns: 1fr; }
+      .hero-wrap{ padding: 14px 20px; justify-content: space-between; }
+      .nav { justify-content: flex-end; }
+      .btn{ padding: 12px 14px; }
+      .title h1{ font-size: 1.55rem; }
+      .equation{ font-size: 2.15rem; padding: 10px 0 14px; gap: 16px; }
+      .l3bGrid{ grid-template-columns: 1fr; }
+    }
+    @media (max-width: 520px){
+      .wrap{ padding: 18px 14px 24px; }
+      .card{ padding: 22px; }
+      .equation{ font-size: 1.85rem; gap: 12px; }
+      .quick{ gap: 12px; }
+      .qbtn{ min-height: 78px; }
+      .dragGrid{ grid-template-columns: repeat(2, 1fr); }
+      .meaningCards{ grid-template-columns: 1fr; }
+      .bigFeedback{ font-size: 1.12rem; padding: 14px 14px; }
+      .footer-pill{ border-radius: 22px; }
+      .btn-blocky { min-width: 120px; font-size: 0.85rem; }
+      .btn-blocky .text-part { padding: 8px 12px; }
+      .btn-blocky .icon-part { padding: 8px 12px; min-width: 36px; }
+      .frac.sm { padding: 4px 8px; font-size: 0.9rem; }
+      .frac.sm .line { width: 18px; height: 2px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="landscapeWarning">
+    <i class="fa-solid fa-mobile-screen"></i>
+    <h2 style="font-weight: 900; letter-spacing: 2px;">請旋轉手機</h2>
+    <p style="font-weight: 700; opacity: 0.9;">本遊戲需要橫向螢幕以獲得最佳體驗！<br><span style="font-size:0.8rem; opacity:0.8">(若使用平板或電腦則不受此限)</span></p>
+  </div>
+
+  <header class="hero">
+    <div class="hero-wrap">
+      <div class="brand">
+        <div class="brandMark" aria-label="Jessie Math Logo">
+          <img src="JESSIEMATH-Q.png" alt="Jessie Math Q" />
+        </div>
+        <div class="title">
+          <h1>Jessie Math捷析</h1>
+        </div>
+      </div>
+
+      <div class="nav">
+        <a class="nav-btn blue" href="https://jessiemath0703-chu.github.io/website2/" title="首頁">
+          <i class="fa-solid fa-house"></i> 首頁
+        </a>
+        <a class="nav-btn blue" href="https://jessiemath0703-chu.github.io/Game-Lobby/" title="遊戲大廳">
+          <i class="fa-solid fa-gamepad"></i> 遊戲大廳
+        </a>
+        <a class="nav-btn purple" href="https://jessiemath0703-chu.github.io/Game-Lobby/#g6-u1" title="G5 乘以幾分之一">
+          <i class="fa-solid fa-rotate-left"></i> G5 乘以幾分之一
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <section class="screen active" id="screenIntro">
+      <div class="card">
+        <span class="tag">必填登入</span>
+        <h2 style="font-size: 1.8rem; margin-top: 0;">先留下你的名字，才讓你進場 😼</h2>
+        <p style="color: var(--text-muted); margin-bottom: 18px;">
+          這不是刁難，是為了把你的成長軌跡記下來：分數也會有記憶，努力更要有。
+        </p>
+
+        <div class="introGrid">
+          <div class="panel">
+            <label for="nameInput" style="display:block; font-weight:800; margin-bottom:10px;">
+              玩家名稱（必填）
+            </label>
+            <input class="inp" id="nameInput" placeholder="例如：捷析小宇宙" maxlength="12" autocomplete="off" />
+            <div class="miniHint">小提醒：最多 12 字，排行榜會用這個名字出現。</div>
+
+            <div style="margin-top: 18px; display: flex; justify-content: center;">
+              <button class="btn-blocky disabled" id="btnGoMenu" disabled style="width: 100%;">
+                <span class="icon-part"><i class="fa-solid fa-arrow-right"></i></span>
+                <span class="text-part">進入主選單</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="infoCard">
+            <p class="infoTitle"><i class="fa-solid fa-circle-info" style="color:var(--primary)"></i> 遊戲介紹</p>
+            <ul class="infoList">
+              <li><b>玩法：</b>第 1、2 關選答案；第 3 關為拖拉題型（含兩種模式）。</li>
+              <li><b>計時：</b>每回合 <b>60 秒</b>，時間歸零就收工。</li>
+              <li><b>計分：</b>答對加分（難度越高加越多），答錯 Combo 歸零。</li>
+              <li><b>回饋：</b>提供透明計算白板輔助，作答皆有解析與老師隨機打氣。</li>
+              <li><b>排行榜：</b>同關卡＋同難度各自記錄 TOP 10。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" id="screenMenu">
+      <div class="card">
+        <div class="hudRow">
+          <div>
+            <span class="tag">Curriculum</span>
+            <h2 style="margin:0">選擇練習關卡</h2>
+          </div>
+          <div class="pillMini">玩家：<span id="menuPlayer">---</span></div>
+        </div>
+
+        <div class="levelCards" id="levelCards"></div>
+
+        <div class="panel">
+          <h3 style="margin-top:0; font-size:0.9rem">練習難度</h3>
+          <!-- 將此處改為 grid 排版以對齊上方的關卡 -->
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;" id="diffSeg"></div>
+        </div>
+
+        <div style="margin-top: 32px; display: flex; justify-content: center;">
+          <button class="btn-blocky" id="btnStart" style="width: 100%; max-width: 340px;">
+            <span class="icon-part"><i class="fa-solid fa-play"></i></span>
+            <span class="text-part">PLAY 開始挑戰</span>
+          </button>
+        </div>
+
+        <div class="sep" style="height:1px; background:#e2e8f0; margin:40px 0"></div>
+        
+        <h3 style="font-size: 0.9rem; color: var(--text-muted);">排行榜 TOP 10</h3>
+        <div class="lb-wrapper">
+          <table class="lb">
+            <thead>
+              <tr>
+                <th style="text-align:center">名次</th>
+                <th>玩家名稱</th>
+                <th style="text-align:center">關卡</th>
+                <th style="text-align:center">難度</th>
+                <th style="text-align:center">答對/總題</th>
+                <th style="text-align:right">得分</th>
+                <th style="text-align:right">時間</th>
+              </tr>
+            </thead>
+            <tbody id="lbBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" id="screenGame">
+      <div class="hudRow">
+        <div class="pillMini"><i class="fa-solid fa-clock"></i> <span id="timeLeft">60</span>s</div>
+        <div class="pillMini"><i class="fa-solid fa-fire"></i> Combo <span id="combo">0</span></div>
+        <div class="pillMini" style="background: var(--primary); color:white; border:none;">Score: <span id="score">0</span></div>
+      </div>
+
+      <div class="timeBar"><div class="timeFill" id="timeFill"></div></div>
+
+      <div class="card" style="position:relative; padding-top: 24px;">
+        <div class="wb-controls" id="wbControls">
+          <i class="fa-solid fa-pen-clip"></i> 白板作圖中 
+          <button class="wb-clear" id="btnWbClear" title="清除白板"><i class="fa-solid fa-trash-can"></i></button>
+        </div>
+        <canvas id="wbCanvas" class="whiteboard-layer"></canvas>
+        <div id="content"></div>
+      </div>
+
+      <div class="gameActions">
+        <button class="btn-blocky" id="btnToggleWb" style="flex:1;">
+          <span class="icon-part"><i class="fa-solid fa-pen"></i></span>
+          <span class="text-part">計算白板</span>
+        </button>
+        <button class="btn-blocky" id="btnPause" style="flex:1;">
+          <span class="icon-part"><i class="fa-solid fa-pause"></i></span>
+          <span class="text-part">暫停</span>
+        </button>
+        <button class="btn-blocky" id="btnRestartGame" style="flex:1;">
+          <span class="icon-part"><i class="fa-solid fa-rotate-right"></i></span>
+          <span class="text-part">重新</span>
+        </button>
+        <button class="btn-blocky" id="btnBackToMenu" style="flex:1;">
+          <span class="icon-part"><i class="fa-solid fa-list"></i></span>
+          <span class="text-part">主選單</span>
+        </button>
+      </div>
+    </section>
+  </div>
+
+  <div class="overlay" id="pauseOverlay">
+    <div class="modal">
+      <h2 style="margin-top:0">練習暫停</h2>
+      <p style="color:var(--text-muted)">深呼吸，準備好再繼續。</p>
+
+      <div style="display:flex; flex-direction:column; gap:16px; align-items:center; margin-top:32px;">
+        <button class="btn-blocky" id="btnResume" style="width: 100%; max-width: 280px;">
+          <span class="icon-part"><i class="fa-solid fa-play"></i></span>
+          <span class="text-part">繼續練習</span>
+        </button>
+        <button class="btn-blocky" id="btnRestart" style="width: 100%; max-width: 280px;">
+          <span class="icon-part"><i class="fa-solid fa-rotate-right"></i></span>
+          <span class="text-part">重新開始</span>
+        </button>
+        <button class="btn-blocky" id="btnQuitNoSave" style="width: 100%; max-width: 280px;">
+          <span class="icon-part"><i class="fa-solid fa-list"></i></span>
+          <span class="text-part">結束回選單</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay" id="resultOverlay">
+    <div class="modal">
+      <span class="tag">Session Complete</span>
+      <h2 id="finalScore" style="font-size:3.5rem; margin:10px 0; font-weight:800">0</h2>
+      <p id="resultTitle" style="font-weight:700">完成挑戰！</p>
+      
+      <div style="display:flex; justify-content:center; gap:20px; margin: 20px 0;">
+        <div style="background:#f0fdf4; border:1px solid #bbf7d0; padding:12px 20px; border-radius:12px; color:#166534; flex: 1;">
+          <div style="font-size:0.85rem; font-weight:800;">答對題數</div>
+          <div style="font-size:1.4rem; font-weight:900;"><span id="resCorrect">0</span> / <span class="resTotal">0</span></div>
+        </div>
+        <div style="background:#fff1f2; border:1px solid #fecdd3; padding:12px 20px; border-radius:12px; color:#9f1239; flex: 1;">
+          <div style="font-size:0.85rem; font-weight:800;">答錯題數</div>
+          <div style="font-size:1.4rem; font-weight:900;"><span id="resWrong">0</span> / <span class="resTotal">0</span></div>
+        </div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:16px; align-items:center; margin-top:24px;">
+        <button class="btn-blocky alt-style" id="btnViewReview" style="width: 100%; max-width: 280px;">
+          <span class="icon-part"><i class="fa-solid fa-magnifying-glass-chart"></i></span>
+          <span class="text-part">查看作答復盤</span>
+        </button>
+        <button class="btn-blocky" id="btnPlayAgain" style="width: 100%; max-width: 280px;">
+          <span class="icon-part"><i class="fa-solid fa-rotate-right"></i></span>
+          <span class="text-part">RESTART 再試一次</span>
+        </button>
+        <button class="btn-blocky" id="btnBackMenu" style="width: 100%; max-width: 280px;">
+          <span class="icon-part"><i class="fa-solid fa-list"></i></span>
+          <span class="text-part">MENU 回到選單</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay" id="reviewOverlay">
+    <div class="modal" style="width: min(800px, 95%); max-height: 95vh; display: flex; flex-direction: column; padding: 30px;">
+      <h2 style="margin-top:0; color: var(--primary);">練習作答復盤</h2>
+      
+      <div style="display:flex; justify-content:center; gap:15px; margin: 10px 0; flex-wrap: wrap;">
+        <div class="pillMini" style="font-size: 1rem;">總得分：<b style="color:var(--primary)" id="revScore">0</b></div>
+        <div class="pillMini" style="font-size: 1rem;">答對：<b style="color:#10b981" id="revCorrect">0/0</b></div>
+        <div class="pillMini" style="font-size: 1rem;">答錯：<b style="color:#f43f5e" id="revWrong">0/0</b></div>
+      </div>
+
+      <div class="review-list" id="reviewList">
+        </div>
+
+      <div style="margin-top: 24px; display: flex; justify-content: center;">
+        <button class="btn-blocky" onclick="document.querySelector('#reviewOverlay').classList.remove('show'); document.querySelector('#resultOverlay').classList.add('show');" style="width: 100%; max-width: 280px;">
+          <span class="icon-part"><i class="fa-solid fa-arrow-left"></i></span>
+          <span class="text-part">返回結算</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="teacher-popup left" id="teacherPopupLeft">
+    <img src="jessie.png" alt="Jessie Teacher" class="teacher-img" onerror="this.src='https://via.placeholder.com/250x250?text=Jessie'">
+    <div class="teacher-bubble" id="bubbleLeft"></div>
+  </div>
+  <div class="teacher-popup right" id="teacherPopupRight">
+    <img src="JESSIEMATH-Q.png" alt="Jessie Math Q" class="teacher-img" onerror="this.src='https://via.placeholder.com/250x250?text=Jessie+Q'">
+    <div class="teacher-bubble" id="bubbleRight"></div>
+  </div>
+
+  <footer>
+    <div class="footer-pill">
+      <div class="footer-left">
+        <div class="footer-dot" aria-hidden="true"></div>
+        <div class="footer-copy">© 2025–2026 Jessie Math 捷析老師. All rights reserved.</div>
+      </div>
+      <div class="footer-right">
+        <div class="footer-icon" aria-hidden="true"><i class="fas fa-compass"></i></div>
+        <div class="footer-tagline">數學不迷路，捷析Jessie 帶你走向理解。</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const $ = (s, el=document)=>el.querySelector(s);
+    const $$ = (s, el=document)=>Array.from(el.querySelectorAll(s));
+
+    function beep(type="good"){
+      const ctx = new (window.AudioContext || window.webkitAudioContext)();
+      const o = ctx.createOscillator();
+      const g = ctx.createGain();
+      o.connect(g); g.connect(ctx.destination);
+      o.type = "sine";
+      const t = ctx.currentTime;
+      o.frequency.setValueAtTime(type==="good"?660:220, t);
+      g.gain.setValueAtTime(0.0001, t);
+      g.gain.exponentialRampToValueAtTime(0.1, t+0.02);
+      g.gain.exponentialRampToValueAtTime(0.0001, t+0.18);
+      o.start(t); o.stop(t+0.2);
+      setTimeout(()=>ctx.close(), 250);
+    }
+
+    const DIFFS = [
+      {id:"slow", name:"慢速", base:10, icon:"fa-feather"},
+      {id:"normal", name:"標準", base:12, icon:"fa-bolt"},
+      {id:"fast", name:"極速", base:14, icon:"fa-rocket"},
+    ];
+    const LEVELS = [
+      {id:1, t:"分數 ÷ 整數", i:"fa-divide"},
+      {id:2, t:"整數 × 分數", i:"fa-xmark"},
+      {id:3, t:"拖拉語意", i:"fa-hand-pointer"}
+    ];
+
+    const state = {
+      screen:"intro", player:"", level:1, diff:"normal",
+      mode:"menu", timeLeft:60, timerId:null, paused:false,
+      score:0, combo:0, correctCount:0, wrongCount:0,
+      l1:{}, l2:{}, l3:{},
+      wbActive: false,
+      history: [],
+      usedQ: new Set()
+    };
+
+    function randInt(min,max){ return Math.floor(Math.random()*(max-min+1))+min; }
+    function gcd(a,b){ a=Math.abs(a); b=Math.abs(b); while(b){ [a,b]=[b,a%b]; } return a||1; }
+    function reduceFrac(n,d){ const g=gcd(n,d); return {n:n/g, d:d/g}; }
+
+    // 全面套用的分數垂直渲染 HTML
+    function fracHTML(n,d,cls=""){
+      return `<div class="frac ${cls}"><div>${n}</div><div class="line"></div><div>${d}</div></div>`;
+    }
+
+    function showScreen(key){
+      $$(".screen").forEach(s => s.classList.remove("active"));
+      $("#screen"+key.charAt(0).toUpperCase()+key.slice(1)).classList.add("active");
+    }
+
+    function updateHUD(){
+      $("#timeLeft").textContent = state.timeLeft;
+      $("#score").textContent = state.score;
+      $("#combo").textContent = state.combo;
+      $("#menuPlayer").textContent = state.player || "---";
+      const ratio = state.timeLeft / 60;
+      $("#timeFill").style.transform = `scaleX(${ratio})`;
+    }
+
+    function logHistory(qHtml, pickedHtml, correctHtml, isCorrect) {
+      state.history.push({ qHtml, pickedHtml, correctHtml, isCorrect });
+    }
+
+    const LB_KEY = "JM_V9_GLOBAL_LB";
+    function getLB(){ return JSON.parse(localStorage.getItem(LB_KEY) || "[]"); }
+    function saveToLB(){
+      if(state.correctCount === 0 && state.wrongCount === 0) return; // No questions answered
+      const lb = getLB();
+      const now = new Date();
+      const tsStr = `${now.getFullYear()}/${(now.getMonth()+1).toString().padStart(2,'0')}/${now.getDate().toString().padStart(2,'0')} ${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}`;
+      
+      lb.push({ 
+        name: state.player, level: state.level, diff: state.diff, 
+        score: state.score, correct: state.correctCount, total: (state.correctCount + state.wrongCount), 
+        ts: tsStr, timestampVal: Date.now()
+      });
+      // Sort by score desc, then by date desc
+      lb.sort((a,b)=> b.score === a.score ? b.timestampVal - a.timestampVal : b.score - a.score);
+      
+      // Keep only top 10 per level/diff combo
+      const filteredLB = [];
+      const counts = {};
+      for(let entry of lb) {
+        let key = `${entry.level}_${entry.diff}`;
+        counts[key] = (counts[key] || 0) + 1;
+        if(counts[key] <= 10) filteredLB.push(entry);
+      }
+      
+      localStorage.setItem(LB_KEY, JSON.stringify(filteredLB));
+    }
+
+    function renderMenu(){
+      showScreen("menu");
+
+      $("#levelCards").innerHTML = LEVELS.map(l => `
+        <div class="lvl ${state.level===l.id?'active':''}" onclick="state.level=${l.id};renderMenu()">
+          <i class="fa-solid ${l.i}"></i>
+          <b>${l.t}</b>
+        </div>
+      `).join("");
+
+      // 難易度按鈕加入樣式以填滿 grid，並匹配上方的圓角及內距
+      $("#diffSeg").innerHTML = DIFFS.map(d => `
+        <button class="btn ${state.diff===d.id?'good':''}" onclick="state.diff='${d.id}';renderMenu()" style="width: 100%; padding: 18px 12px; border-radius: var(--radius-md); justify-content: center; height: 100%;">
+          <i class="fa-solid ${d.icon}"></i> ${d.name}
+        </button>
+      `).join("");
+
+      const allLb = getLB();
+      const viewLb = allLb.filter(x => x.level === state.level && x.diff === state.diff).slice(0,10);
+      
+      const getRankIcon = (i) => {
+        if(i===0) return '🥇'; if(i===1) return '🥈'; if(i===2) return '🥉'; return `<span style="color:var(--text-muted)">#${i+1}</span>`;
+      };
+
+      const lvlName = LEVELS.find(l=>l.id===state.level).t.split(" ")[0];
+      const diffName = DIFFS.find(d=>d.id===state.diff).name;
+
+      $("#lbBody").innerHTML = viewLb.length ? viewLb.map((r,i)=>`
+        <tr>
+          <td class="rankCell">${getRankIcon(i)}</td>
+          <td style="font-weight:700;">${r.name}</td>
+          <td style="text-align:center"><span class="tag" style="margin:0">${lvlName}</span></td>
+          <td style="text-align:center">${diffName}</td>
+          <td style="text-align:center">${r.correct}/${r.total}</td>
+          <td style="text-align:right; color:var(--primary);"><b>${r.score}</b></td>
+          <td style="text-align:right; font-size:0.8rem; color:var(--text-muted);">${r.ts}</td>
+        </tr>
+      `).join("") : '<tr><td colspan="7" style="text-align:center;color:var(--text-muted);padding:20px;">此關卡與難度尚無記錄，搶下第一名吧！</td></tr>';
+      updateHUD();
+    }
+
+    function shuffle(arr){ return arr.sort(()=>Math.random()-0.5); }
+
+    function newQuestion(){
+      clearWhiteboard();
+      let sig, attempts = 0;
+      resetIdlePopup(); // Restart the idle cheer timer when a new question shows
+
+      if(state.level===1) {
+        let q, p, k;
+        do {
+          q = randInt(2, 30);
+          p = randInt(1, q * 2); // 擴大分子，允許假分數
+          if(p%q===0) p++; // 避免整數
+          k = randInt(2, 20);
+          sig = `L1_${p}_${q}_${k}`;
+          attempts++;
+        } while (state.usedQ.has(sig) && attempts < 20);
+        state.usedQ.add(sig);
+
+        const ans = reduceFrac(p, q*k);
+        const wrongA = reduceFrac(p, q);                 
+        const wrongB = reduceFrac(p*k, q);                
+        const wrongC = reduceFrac(p, q*(k+1));            
+        const options = uniqueFracShuffle([ans, wrongA, wrongB, wrongC], ans);
+
+        state.l1 = { p, q, k, ans, options, locked:false };
+        renderL1();
+      } else if(state.level===2) {
+        let m, a, b;
+        do {
+          m = randInt(2, 50);
+          b = randInt(2, 30);
+          a = randInt(1, b-1);
+          sig = `L2_${m}_${a}_${b}`;
+          attempts++;
+        } while (state.usedQ.has(sig) && attempts < 20);
+        state.usedQ.add(sig);
+
+        const ans = reduceFrac(m*a, b);
+        const wrongA = reduceFrac(m, b-1<=1?b+1:b-1);
+        const wrongB = reduceFrac(m, b+1);
+        const wrongC = reduceFrac(m*b, a);                
+        const options = uniqueFracShuffle([ans, wrongA, wrongB, wrongC], ans);
+
+        state.l2 = { m, a, b, ans, options, locked:false };
+        renderL2();
+      } else {
+        const mode = Math.random() < 0.5 ? "A" : "B";
+        state.l3 = { mode };
+        if(mode === "A") buildL3A();
+        else buildL3B();
+      }
+    }
+
+    function sameFrac(x,y){ return x.n===y.n && x.d===y.d; }
+    function uniqueFracShuffle(list, ans){
+      const out = [];
+      for(const f of list){
+        if(!out.some(o=>sameFrac(o,f))) out.push(f);
+      }
+      while(out.length < 4){
+        const n = randInt(1,25);
+        const d = randInt(2,30);
+        const f = reduceFrac(n,d);
+        if(!out.some(o=>sameFrac(o,f)) && !sameFrac(f, ans)) out.push(f);
+      }
+      return shuffle(out).slice(0,4);
+    }
+
+    function renderL1(){
+      const {p,q,k,options} = state.l1;
+      $("#content").innerHTML = `
+        <div class="equation">
+          ${fracHTML(p,q)} <span style="color:var(--text-muted)">÷</span> <div class="box">${k}</div>
+        </div>
+        <div id="l12Feedback"></div>
+        <div class="quick">
+          ${options.map((o,i)=>`<button class="qbtn" onclick="checkAns(${i})" aria-label="選項 ${i+1}">${fracHTML(o.n,o.d,"sm")}</button>`).join("")}
+        </div>
+      `;
+    }
+
+    function renderL2(){
+      const {m,a,b,options} = state.l2;
+      $("#content").innerHTML = `
+        <div class="equation">
+          <div class="box">${m}</div> <span style="color:var(--text-muted)">×</span> ${fracHTML(a,b)}
+        </div>
+        <div id="l12Feedback"></div>
+        <div class="quick">
+          ${options.map((o,i)=>`<button class="qbtn" onclick="checkAns(${i})" aria-label="選項 ${i+1}">${fracHTML(o.n,o.d,"sm")}</button>`).join("")}
+        </div>
+      `;
+    }
+
+    function showBigFeedbackL12(ok, ansFracHTML, gain){
+      const fb = $("#l12Feedback");
+      if(!fb) return;
+      fb.innerHTML = `
+        <div class="bigFeedback ${ok?'ok':'bad'}">
+          ${ok ? '✅ 正確！' : '❌ 錯誤！'}<br>
+          <span style="color:#475569;font-weight:900;">正確答案是：</span>
+          <div class="answerLine">${ansFracHTML}</div>
+          ${ok ? `<div style="margin-top:8px; font-size:1.05rem;">+${gain} 分</div>` : ``}
+        </div>
+      `;
+    }
+
+    // --- Teacher Popup & Random Idle Logic ---
+    const msgGood = ["太棒了！", "完全正確！", "就是這樣，繼續保持！", "超強的！", "觀念很清楚喔！", "完美解題！", "你太厲害啦！"];
+    const msgBad = ["沒關係，我們再試一次！", "差一點點，加油！", "不要氣餒，仔細看一下！", "錯誤是學習的開始喔！", "再想一下，你可以的！", "別灰心，答案就在細節裡！"];
+    const msgIdle = ["仔細想想看！", "慢慢來，你可以的！", "加油加油！", "需要幫忙嗎？", "觀察一下數字喔！", "別緊張，看清楚題目！", "專注一下，你一定行！"];
+    
+    let popupTimer = null;
+    let idlePopupTimer = null;
+    let lastMsg = "";
+
+    function resetIdlePopup() {
+      clearTimeout(idlePopupTimer);
+      if (state.mode !== "play" || state.paused) return;
+      
+      // Randomly popup an encouraging message after 8-15 seconds of inactivity
+      idlePopupTimer = setTimeout(() => {
+        triggerTeacherPopup(null); 
+      }, randInt(8000, 15000));
+    }
+
+    // isCorrect: true(正確), false(錯誤), null(純打氣發呆中)
+    function triggerTeacherPopup(isCorrect) {
+      clearTimeout(popupTimer);
+      const pLeft = $("#teacherPopupLeft");
+      const pRight = $("#teacherPopupRight");
+
+      // 為了避免同時出現或是動畫卡一半，先強制全部隱藏
+      pLeft.classList.remove("show");
+      pRight.classList.remove("show");
+
+      // 稍微延遲一下讓 DOM 重置動畫狀態
+      setTimeout(() => {
+        const side = Math.random() < 0.5 ? 'left' : 'right';
+        
+        let msgArr;
+        if (isCorrect === true) {
+          msgArr = msgGood;
+        } else if (isCorrect === false) {
+          msgArr = msgBad;
+        } else {
+          msgArr = msgIdle; 
+        }
+        
+        // 隨機選一個對話，並防呆不要連續出現一樣的句子
+        let msg = msgArr[Math.floor(Math.random() * msgArr.length)];
+        if (msgArr.length > 1) {
+          while (msg === lastMsg) {
+            msg = msgArr[Math.floor(Math.random() * msgArr.length)];
+          }
+        }
+        lastMsg = msg;
+        
+        // 觸發展出
+        if (side === 'left') {
+          $("#bubbleLeft").textContent = msg;
+          pLeft.classList.add("show");
+        } else {
+          $("#bubbleRight").textContent = msg;
+          pRight.classList.add("show");
+        }
+
+        // 3秒後自動收合
+        popupTimer = setTimeout(() => {
+          pLeft.classList.remove("show");
+          pRight.classList.remove("show");
+          resetIdlePopup(); // Resume idle timer once popup closes
+        }, 3000);
+      }, 50);
+    }
+
+    window.checkAns = (idx) => {
+      const cur = state.level===1 ? state.l1 : state.l2;
+      if(cur.locked) return;
+      cur.locked = true;
+
+      if(state.wbActive) toggleWhiteboard();
+
+      const picked = cur.options[idx];
+      const isCorrect = (picked.n === cur.ans.n && picked.d === cur.ans.d);
+      const gain = DIFFS.find(d=>d.id===state.diff).base;
+      const ansHTML = fracHTML(cur.ans.n, cur.ans.d);
+
+      // Log to history
+      let qHtml;
+      if(state.level === 1) {
+        qHtml = `${fracHTML(cur.p, cur.q, "sm")} ÷ <div class="box" style="padding:2px 8px; font-size:0.95rem;">${cur.k}</div>`;
+      } else {
+        qHtml = `<div class="box" style="padding:2px 8px; font-size:0.95rem;">${cur.m}</div> × ${fracHTML(cur.a, cur.b, "sm")}`;
+      }
+      logHistory(qHtml, fracHTML(picked.n, picked.d, "sm"), fracHTML(cur.ans.n, cur.ans.d, "sm"), isCorrect);
+
+      if(isCorrect){
+        state.score += gain;
+        state.combo++;
+        state.correctCount++;
+        beep("good");
+        showBigFeedbackL12(true, ansHTML, gain);
+      } else {
+        state.combo = 0;
+        state.wrongCount++;
+        beep("bad");
+        showBigFeedbackL12(false, ansHTML, gain);
+      }
+      
+      updateHUD();
+      triggerTeacherPopup(isCorrect);
+      setTimeout(()=>{ cur.locked=false; newQuestion(); }, isCorrect ? 800 : 1500);
+    };
+
+    function buildL3A(){
+      let sig, attempts=0, p, q, k;
+      do {
+        q = randInt(2, 25);
+        p = randInt(1, q*2);
+        if(p%q===0) p++;
+        k = randInt(2, 20);
+        sig = `L3A_${p}_${q}_${k}`;
+        attempts++;
+      } while (state.usedQ.has(sig) && attempts < 20);
+      state.usedQ.add(sig);
+
+      const correct = reduceFrac(1, k);
+      const wrong1 = reduceFrac(k, 1);
+      const wrong2 = reduceFrac(1, k+1);
+      const wrong3 = reduceFrac(1, Math.max(2, k-1));
+      const options = uniqueFracShuffle([correct, wrong1, wrong2, wrong3], correct);
+
+      state.l3 = { mode:"A", p, q, k, correct, options, locked: false };
+      renderL3A();
+    }
+
+    function renderL3A(){
+      const {p,q,k,options} = state.l3;
+      $("#content").innerHTML = `
+        <div class="l3Wrap">
+          <div class="l3TopHint">
+            <i class="fa-solid fa-hand-pointer" style="color:var(--primary)"></i>
+            把「除以 <b>${k}</b>」改寫成「乘以倒數」，拖拉正確分數到空格
+          </div>
+          <div class="equation" style="padding: 18px 0 10px;">
+            ${fracHTML(p,q)} <span style="color:var(--text-muted)">÷</span> <div class="box">${k}</div>
+            <span style="color:var(--text-muted)">＝</span>
+            ${fracHTML(p,q)} <span style="color:var(--text-muted)">×</span>
+            <div class="dropSlot" id="dropSlot" aria-label="拖拉到這裡">拖到這裡</div>
+          </div>
+          <div id="l3Feedback"></div>
+          <div class="dragGrid" id="dragGrid">
+            ${options.map((o,i)=>`
+              <div class="dragChip" draggable="true" data-idx="${i}" aria-label="拖拉選項 ${i+1}">
+                ${fracHTML(o.n,o.d,"sm")}
+              </div>
+            `).join("")}
+          </div>
+        </div>
+      `;
+      wireL3A();
+    }
+
+    function wireL3A(){
+      const slot = $("#dropSlot");
+      const chips = $$("#dragGrid .dragChip");
+      const lockUI = () => { chips.forEach(c => { c.classList.add("locked"); c.setAttribute("draggable","false"); }); };
+
+      chips.forEach(chip => {
+        chip.addEventListener("dragstart", (e)=>{
+          if(state.l3.locked || state.wbActive) { e.preventDefault(); return; }
+          e.dataTransfer.setData("text/plain", chip.dataset.idx);
+          setTimeout(()=>chip.style.opacity="0.6", 0);
+        });
+        chip.addEventListener("dragend", ()=> chip.style.opacity="1");
+        chip.addEventListener("click", ()=>{
+          if(state.l3.locked) return;
+          if(state.wbActive) toggleWhiteboard();
+          checkL3A(Number(chip.dataset.idx), lockUI);
+        });
+      });
+
+      slot.addEventListener("dragover", (e)=>{
+        e.preventDefault();
+        if(state.l3.locked) return;
+        slot.classList.add("hover");
+      });
+      slot.addEventListener("dragleave", ()=> slot.classList.remove("hover"));
+      slot.addEventListener("drop", (e)=>{
+        e.preventDefault();
+        slot.classList.remove("hover");
+        if(state.l3.locked) return;
+        const idx = Number(e.dataTransfer.getData("text/plain"));
+        checkL3A(idx, lockUI);
+      });
+    }
+
+    function checkL3A(idx, lockUI){
+      const cur = state.l3;
+      const picked = cur.options[idx];
+      const isCorrect = (picked.n === cur.correct.n && picked.d === cur.correct.d);
+
+      cur.locked = true;
+      lockUI();
+
+      const fb = $("#l3Feedback");
+      // 使用 fracHTML 強制上下顯示
+      const correctHtml = fracHTML(cur.correct.n, cur.correct.d, "sm");
+      const pickedHtml = fracHTML(picked.n, picked.d, "sm");
+      const gain = DIFFS.find(d=>d.id===state.diff).base;
+
+      // Log History
+      const qHtml = `${fracHTML(cur.p, cur.q, "sm")} ÷ <div class="box" style="padding:2px 8px; font-size:0.95rem;">${cur.k}</div> ＝ ${fracHTML(cur.p, cur.q, "sm")} × <b style="color:var(--primary)">?</b>`;
+      logHistory(qHtml, pickedHtml, correctHtml, isCorrect);
+
+      if(isCorrect){
+        state.score += gain;
+        state.combo++;
+        state.correctCount++;
+        beep("good");
+        fb.innerHTML = `
+          <div class="bigFeedback ok">
+            ✅ 正確！<br>
+            <div style="color:var(--text-muted); font-weight:900; margin-top:8px; display:flex; align-items:center; justify-content:center; gap:8px;">除以 ${cur.k} ＝ 乘以 ${correctHtml}</div>
+            <span style="font-size:1.1rem; display:block; margin-top:8px;">+${gain} 分</span>
+          </div>
+        `;
+      } else {
+        state.combo = 0;
+        state.wrongCount++;
+        beep("bad");
+        fb.innerHTML = `
+          <div class="bigFeedback bad">
+            ❌ 錯誤！<br>
+            <div style="margin-top:8px; display:flex; align-items:center; justify-content:center; gap:8px;">正確答案是：${correctHtml}</div>
+            <div style="color:var(--text-muted); font-weight:900; margin-top:8px; display:flex; align-items:center; justify-content:center; gap:8px;">所以 ÷ ${cur.k} 要改寫成 × ${correctHtml}</div>
+          </div>
+        `;
+      }
+
+      updateHUD();
+      triggerTeacherPopup(isCorrect);
+      setTimeout(()=>newQuestion(), isCorrect ? 800 : 1800);
+    }
+
+    function buildL3B(){
+      let sig, attempts=0, m, b, a=1;
+      do {
+        m = randInt(10, 100);
+        b = randInt(2, 20);
+        sig = `L3B_${m}_${b}`;
+        attempts++;
+      } while (state.usedQ.has(sig) && attempts < 20);
+      state.usedQ.add(sig);
+
+      // 卡片文字改套用 fracHTML("1","b","sm")
+      const cards = shuffle([
+        {id:"mul1", text:`把 ${m} 變成 ${fracHTML(a,b,"sm")} 倍`, target:"mul"},
+        {id:"mul2", text:`取出 ${m} 的 ${fracHTML(a,b,"sm")}`, target:"mul"},
+        {id:"div1", text:`把 ${m} 平均分成 ${b} 份`, target:"div"},
+        {id:"div2", text:`把 ${m} 依 ${b} 等分`, target:"div"},
+      ]);
+
+      state.l3 = { mode:"B", m, a, b, cards, placed: { mul:null, div:null }, locked:false };
+      renderL3B();
+    }
+
+    function renderL3B(){
+      const {m,a,b,cards,placed} = state.l3;
+      $("#content").innerHTML = `
+        <div class="equation" style="padding: 16px 0 8px; gap: 14px;">
+          <div class="box">${m}</div> <span style="color:var(--text-muted)">×</span> ${fracHTML(a,b)}
+          <span style="color:var(--text-muted); font-size:1.2rem; font-weight:900;">與</span>
+          <div class="box">${m}</div> <span style="color:var(--text-muted)">÷</span> <div class="box">${b}</div>
+        </div>
+        <div class="l3bGrid">
+          <div class="l3bBox">
+            <p class="l3bTitle"><i class="fa-solid fa-hand-pointer"></i> 語意卡片</p>
+            <p class="l3bSub">拖拉卡片到對應的配對槽。</p>
+            <div class="meaningCards" id="meaningCards">
+              ${cards.map(c=>`
+                <div class="meaningCard" draggable="true" data-id="${c.id}" aria-label="語意卡">
+                  <i class="fa-solid fa-hand"></i> <span>${c.text}</span>
+                </div>
+              `).join("")}
+            </div>
+          </div>
+          <div class="l3bBox">
+            <p class="l3bTitle"><i class="fa-solid fa-square-check"></i> 配對槽</p>
+            <div class="pairArea">
+              <div class="pairSlot" id="slotMul" data-slot="mul">
+                <div class="slotHead">
+                  <span class="slotBadge" style="display:inline-flex; align-items:center; gap:4px;"><i class="fa-solid fa-xmark"></i> × ${fracHTML(a,b,"sm")}</span>
+                  <span style="color:var(--text-muted); font-weight:900;">拖到這裡</span>
+                </div>
+                <div class="slotFill" id="slotMulFill">${placed.mul ? placed.mul.text : `<span class="slotEmpty">尚未放入</span>`}</div>
+              </div>
+              <div class="pairSlot" id="slotDiv" data-slot="div">
+                <div class="slotHead">
+                  <span class="slotBadge"><i class="fa-solid fa-divide"></i> ÷ ${b}</span>
+                  <span style="color:var(--text-muted); font-weight:900;">拖到這裡</span>
+                </div>
+                <div class="slotFill" id="slotDivFill">${placed.div ? placed.div.text : `<span class="slotEmpty">尚未放入</span>`}</div>
+              </div>
+              <div class="pairActions">
+                <button class="btnGreen" id="btnSubmitPair"><i class="fa-solid fa-check"></i> 送出</button>
+                <button class="btnGray" id="btnResetPair"><i class="fa-solid fa-rotate-left"></i> 重置</button>
+              </div>
+              <div id="l3Feedback"></div>
+            </div>
+          </div>
+        </div>
+      `;
+      wireL3B();
+    }
+
+    function wireL3B(){
+      const cardsEls = $$("#meaningCards .meaningCard");
+      const slotMul = $("#slotMul");
+      const slotDiv = $("#slotDiv");
+
+      const wireSlot = (slotEl)=>{
+        slotEl.addEventListener("dragover", (e)=>{
+          e.preventDefault();
+          if(state.l3.locked) return;
+          slotEl.classList.add("hover");
+        });
+        slotEl.addEventListener("dragleave", ()=> slotEl.classList.remove("hover"));
+        slotEl.addEventListener("drop", (e)=>{
+          e.preventDefault();
+          slotEl.classList.remove("hover");
+          if(state.l3.locked) return;
+          const id = e.dataTransfer.getData("text/plain");
+          placeCardToSlot(id, slotEl.dataset.slot);
+        });
+      };
+      wireSlot(slotMul);
+      wireSlot(slotDiv);
+
+      cardsEls.forEach(el=>{
+        el.addEventListener("dragstart", (e)=>{
+          if(state.l3.locked || state.wbActive) { e.preventDefault(); return; }
+          e.dataTransfer.setData("text/plain", el.dataset.id);
+          setTimeout(()=> el.style.opacity="0.6", 0);
+        });
+        el.addEventListener("dragend", ()=> el.style.opacity="1");
+        el.addEventListener("click", ()=>{
+          if(state.l3.locked) return;
+          if(state.wbActive) toggleWhiteboard();
+          if(!state.l3.placed.mul) placeCardToSlot(el.dataset.id, "mul");
+          else if(!state.l3.placed.div) placeCardToSlot(el.dataset.id, "div");
+          else placeCardToSlot(el.dataset.id, "mul");
+        });
+      });
+
+      $("#btnResetPair").onclick = ()=>{
+        if(state.l3.locked) return;
+        state.l3.placed = {mul:null, div:null};
+        renderL3B();
+      };
+      $("#btnSubmitPair").onclick = ()=>{
+        if(state.l3.locked) return;
+        if(state.wbActive) toggleWhiteboard();
+        submitL3B();
+      };
+    }
+
+    function placeCardToSlot(cardId, slot){
+      const card = state.l3.cards.find(c=>c.id===cardId);
+      if(!card) return;
+      state.l3.placed[slot] = card;
+      const other = slot === "mul" ? "div" : "mul";
+      if(state.l3.placed[other] && state.l3.placed[other].id === cardId){
+        state.l3.placed[other] = null;
+      }
+      renderL3B();
+    }
+
+    function submitL3B(){
+      const fb = $("#l3Feedback");
+      const {placed, m, a, b, cards} = state.l3;
+
+      if(!placed.mul || !placed.div){
+        fb.innerHTML = `<div class="bigFeedback bad">先把兩個槽都放上語意卡再送出喔！</div>`;
+        beep("bad");
+        state.combo = 0;
+        updateHUD();
+        return;
+      }
+
+      state.l3.locked = true;
+      const ok = (placed.mul.target === "mul") && (placed.div.target === "div");
+      const gain = DIFFS.find(d=>d.id===state.diff).base;
+
+      const correctMul = cards.find(c=>c.target==="mul").text;
+      const correctDiv = cards.find(c=>c.target==="div").text;
+
+      // Log History
+      const qHtml = `
+        <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+          <div style="white-space:nowrap;">${m} × ${fracHTML(a, b, "sm")}</div>
+          <div style="color:var(--text-muted)">與</div>
+          <div style="white-space:nowrap;">${m} ÷ ${b}</div>
+        </div>`;
+      const pickedHtml = `
+        <div style="display:flex; flex-direction:column; gap:4px; font-size:0.9rem; margin-top:6px;">
+          <div><span style="color:var(--primary); font-weight:800;">[×]</span> ${placed.mul.text}</div>
+          <div><span style="color:var(--primary); font-weight:800;">[÷]</span> ${placed.div.text}</div>
+        </div>`;
+      const correctHtmlStr = `
+        <div style="display:flex; flex-direction:column; gap:4px; font-size:0.9rem; margin-top:6px;">
+          <div><span style="color:var(--primary); font-weight:800;">[×]</span> ${correctMul}</div>
+          <div><span style="color:var(--primary); font-weight:800;">[÷]</span> ${correctDiv}</div>
+        </div>`;
+      
+      logHistory(qHtml, pickedHtml, correctHtmlStr, ok);
+
+      if(ok){
+        state.score += gain;
+        state.combo++;
+        state.correctCount++;
+        beep("good");
+        fb.innerHTML = `
+          <div class="bigFeedback ok">
+            ✅ 配對正確！<br>
+            <span style="color:var(--text-muted); font-weight:900;">你抓到的是「語意位置」</span><br>
+            <span style="font-size:1.1rem;">+${gain} 分</span>
+          </div>
+        `;
+      } else {
+        state.combo = 0;
+        state.wrongCount++;
+        beep("bad");
+        fb.innerHTML = `
+          <div class="bigFeedback bad">
+            ❌ 配對錯誤！<br>
+            <div style="color:var(--text-muted); font-weight:900; margin-top:8px; display:flex; align-items:center; justify-content:center; gap:8px;">× ${fracHTML(a,b,"sm")} 應對應：</div>
+            <div style="font-weight:800;">${correctMul}</div><br>
+            <div style="color:var(--text-muted); font-weight:900; display:flex; align-items:center; justify-content:center; gap:8px;">÷ ${b} 應對應：</div>
+            <div style="font-weight:800;">${correctDiv}</div>
+          </div>
+        `;
+      }
+      updateHUD();
+      triggerTeacherPopup(ok);
+      setTimeout(()=>newQuestion(), ok ? 1000 : 2500);
+    }
+
+    function startRound(){
+      state.score = 0; state.timeLeft = 60; state.combo = 0; 
+      state.correctCount = 0; state.wrongCount = 0; state.mode = "play";
+      state.history = []; // Reset history
+      state.usedQ.clear(); // Reset used questions generator
+      
+      if(state.wbActive) toggleWhiteboard(); // turn off if it was on
+      
+      showScreen("game");
+      updateHUD();
+      initWhiteboard();
+      newQuestion();
+      
+      clearInterval(state.timerId);
+      state.timerId = setInterval(()=>{
+        if(state.paused) return;
+        state.timeLeft--;
+        updateHUD();
+        if(state.timeLeft<=0) endRound();
+      }, 1000);
+    }
+
+    function endRound(){
+      clearInterval(state.timerId);
+      clearTimeout(idlePopupTimer); // Clear idle popups when game over
+      saveToLB();
+      $("#finalScore").textContent = state.score;
+      $("#resCorrect").textContent = state.correctCount;
+      $("#resWrong").textContent = state.wrongCount;
+      $$(".resTotal").forEach(el => el.textContent = (state.correctCount + state.wrongCount));
+      
+      // Prepare Review Data
+      renderReviewOverlay();
+
+      $("#resultOverlay").classList.add("show");
+    }
+
+    function renderReviewOverlay() {
+      $("#revScore").textContent = state.score;
+      const total = state.correctCount + state.wrongCount;
+      $("#revCorrect").textContent = `${state.correctCount} / ${total}`;
+      $("#revWrong").textContent = `${state.wrongCount} / ${total}`;
+
+      let html = "";
+      state.history.forEach((h, i) => {
+        html += `
+          <div class="review-item ${h.isCorrect ? 'ok' : 'bad'}">
+            <div class="review-q">
+              <span class="tag" style="margin:0; background:rgba(15,23,42,0.06); color:var(--text-main);">Q${i+1}</span> 
+              ${h.qHtml}
+            </div>
+            <div class="review-ans">
+              ${h.isCorrect
+                ? `<div class="correct-ans"><i class="fa-solid fa-check-circle"></i> 你的答案：${h.correctHtml}</div>`
+                : `<div class="your-ans"><i class="fa-solid fa-times-circle"></i> 你的答案：${h.pickedHtml}</div>
+                   <div class="correct-ans"><i class="fa-solid fa-arrow-right"></i> 正確答案：${h.correctHtml}</div>`
+              }
+            </div>
+          </div>
+        `;
+      });
+      $("#reviewList").innerHTML = html || "<p style='text-align:center;color:var(--text-muted); font-weight:800; margin-top:20px;'>本局無作答記錄</p>";
+    }
+
+    function backToMenu(){
+      clearInterval(state.timerId);
+      clearTimeout(idlePopupTimer);
+      state.paused = false;
+      if(state.wbActive) toggleWhiteboard();
+      $("#pauseOverlay").classList.remove("show");
+      $("#resultOverlay").classList.remove("show");
+      $("#reviewOverlay").classList.remove("show");
+      renderMenu();
+    }
+
+    // --- Whiteboard Logic ---
+    const wbCanvas = $("#wbCanvas");
+    const wbCtx = wbCanvas.getContext("2d");
+    let drawing = false;
+
+    function initWhiteboard() {
+      // match canvas internal res to visual size
+      const rect = wbCanvas.parentElement.getBoundingClientRect();
+      wbCanvas.width = rect.width;
+      wbCanvas.height = rect.height;
+      wbCtx.lineWidth = 3;
+      wbCtx.lineCap = "round";
+      wbCtx.lineJoin = "round";
+      wbCtx.strokeStyle = "rgba(59, 130, 246, 0.8)";
+    }
+
+    function getPointerPos(e) {
+      const rect = wbCanvas.getBoundingClientRect();
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+      return { x: clientX - rect.left, y: clientY - rect.top };
+    }
+
+    wbCanvas.addEventListener("mousedown", (e) => {
+      drawing = true;
+      const pos = getPointerPos(e);
+      wbCtx.beginPath();
+      wbCtx.moveTo(pos.x, pos.y);
+    });
+    wbCanvas.addEventListener("mousemove", (e) => {
+      if(!drawing) return;
+      const pos = getPointerPos(e);
+      wbCtx.lineTo(pos.x, pos.y);
+      wbCtx.stroke();
+    });
+    window.addEventListener("mouseup", () => { drawing = false; });
+    
+    wbCanvas.addEventListener("touchstart", (e) => {
+      if(state.wbActive) e.preventDefault(); // prevent scrolling
+      drawing = true;
+      const pos = getPointerPos(e);
+      wbCtx.beginPath();
+      wbCtx.moveTo(pos.x, pos.y);
+    }, {passive: false});
+    wbCanvas.addEventListener("touchmove", (e) => {
+      if(!drawing) return;
+      if(state.wbActive) e.preventDefault();
+      const pos = getPointerPos(e);
+      wbCtx.lineTo(pos.x, pos.y);
+      wbCtx.stroke();
+    }, {passive: false});
+    window.addEventListener("touchend", () => { drawing = false; });
+
+    function clearWhiteboard() {
+      wbCtx.clearRect(0, 0, wbCanvas.width, wbCanvas.height);
+    }
+
+    function toggleWhiteboard() {
+      state.wbActive = !state.wbActive;
+      const btn = $("#btnToggleWb");
+      if(state.wbActive) {
+        initWhiteboard();
+        wbCanvas.classList.add("active");
+        $("#wbControls").classList.add("show");
+        btn.classList.add("active-toggle");
+      } else {
+        wbCanvas.classList.remove("active");
+        $("#wbControls").classList.remove("show");
+        btn.classList.remove("active-toggle");
+      }
+    }
+
+    $("#btnToggleWb").onclick = toggleWhiteboard;
+    $("#btnWbClear").onclick = clearWhiteboard;
+
+    // Window resize handler to maintain whiteboard aspect ratio
+    window.addEventListener("resize", () => {
+      if(state.screen === "game" && state.wbActive) {
+        // Save current drawing
+        const data = wbCanvas.toDataURL();
+        initWhiteboard();
+        const img = new Image();
+        img.onload = () => wbCtx.drawImage(img, 0, 0);
+        img.src = data;
+      }
+    });
+
+    // Intro/Login Logic
+    const nameInput = $("#nameInput");
+    const btnGoMenu = $("#btnGoMenu");
+
+    function setGoMenuEnabled(enabled){
+      if(enabled){
+        btnGoMenu.disabled = false;
+        btnGoMenu.classList.remove("disabled");
+      }else{
+        btnGoMenu.disabled = true;
+        btnGoMenu.classList.add("disabled");
+      }
+    }
+    function normalizeName(v){ return (v || "").trim().replace(/\s+/g, " "); }
+
+    setGoMenuEnabled(false);
+    nameInput.addEventListener("input", () => {
+      const v = normalizeName(nameInput.value);
+      setGoMenuEnabled(v.length > 0);
+    });
+
+    btnGoMenu.onclick = () => {
+      const v = normalizeName(nameInput.value);
+      if(!v){
+        setGoMenuEnabled(false);
+        nameInput.focus();
+        nameInput.style.boxShadow = "0 0 0 4px rgba(244, 63, 94, 0.18)";
+        setTimeout(()=> nameInput.style.boxShadow = "", 350);
+        return;
+      }
+      state.player = v;
+      renderMenu();
+    };
+
+    // Button Bindings
+    $("#btnStart").onclick = startRound;
+    $("#btnPause").onclick = () => { state.paused = true; clearTimeout(idlePopupTimer); $("#pauseOverlay").classList.add("show"); };
+    $("#btnResume").onclick = () => { state.paused = false; resetIdlePopup(); $("#pauseOverlay").classList.remove("show"); };
+    $("#btnRestart").onclick = () => { $("#pauseOverlay").classList.remove("show"); state.paused = false; startRound(); };
+    $("#btnRestartGame").onclick = () => { state.paused = false; startRound(); };
+    $("#btnQuitNoSave").onclick = backToMenu;
+    $("#btnBackToMenu").onclick = backToMenu; 
+
+    $("#btnBackMenu").onclick = backToMenu;
+    $("#btnPlayAgain").onclick = () => { $("#resultOverlay").classList.remove("show"); startRound(); };
+    
+    // View Review Dashboard
+    $("#btnViewReview").onclick = () => {
+      $("#resultOverlay").classList.remove("show");
+      $("#reviewOverlay").classList.add("show");
+    };
+  </script>
+</body>
+</html>
